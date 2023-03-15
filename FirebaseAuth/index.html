@@ -84,7 +84,7 @@
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log("Hata oldu!");
+          console.log("Signup hatası:");
           console.log(errorMessage);
         });
     });
@@ -97,13 +97,13 @@
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log("Login başarılı");
+          console.log("Login başarılı!");
           console.log(user);
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log("Login hatası");
+          console.log("Login hatası:");
           console.log(errorMessage);
         });
     });
