@@ -1,0 +1,83 @@
+Docker Web Sitesi: https://www.docker.com
+
+Docker Kurulumları
+Windows: https://youtu.be/2ezNqqaSjq8
+MacOS: https://youtu.be/gcacQ29AjOo
+Linux: https://youtu.be/Vplj9b0L_1Y
+
+Docker Hub Sitesi: https://hub.docker.com
+
+1 - Docker Hub'dan bir node sunucusu imajı çekip bir konteynerde çalıştırma komutu:
+docker run node
+
+2 - Docker yardım alma komutu
+docker --help
+
+3 - Docker konteyner listeleme
+docker ps -a
+
+4 - Konteyner oluştururken bir interaktif session başlatma
+docker run -it node
+(Çıkmak için 2 kez Ctrl+C)
+
+5 - Tekrar konteyner listeleme
+docker ps -a
+
+**** Bir Node App Örneği ****
+
+* Verilen örnek node uygulaması için (sadece server.js dosyasından oluşan uygulama) öncelikle projenin dependency'lerini kumamız gerekiyor.
+
+* Projenin dependency kütüphaneleri package.json içerisinde listelenir (şu an sadece "express": "^4.18.2").
+
+* Eğer bilgisayarınızda node yüklü ise (yüklü değilse ve kurmak isterseniz - kurmak zorunda değilsiniz - https://nodejs.org/ adreinden kurabilirsiniz) öncelikle "npm install" komutuyla proje için gerekli dependency'leri kurmamız gerekir.
+
+* sonrasında "node server.js" komutu ile sunucuyu başlatabiliriz.
+
+* Proje dizininde aşağıdaki komutu çalıştırıp projemizin imajını oluşturabiliriz:
+docker build .
+
+* Sistemdeki imajları listeleme:
+docker images
+docker image ls
+
+* Node app'ımızın imajını çalıştırma (en sondaki string image id olmalıdır):
+docker run -p 3050:3000 d2405d25d953
+
+* Yeni terminal açıp çalışmakta olan konteynerleri listeleme
+docker ps
+
+* Konteyneri durdurma
+docker stop d2405d25d953
+veya
+docker stop container_name
+
+* Konteyner başlatma
+"docker run container_id" ile aynı imajdan YENİ bir konteyner başlatılır.
+"docker start container_id" veya "docker start name" ile eskiden başlatılıp durdurulmuş bir konteyner tekrar başlatılır. 
+
+* Konteyneri attached mode ile başlatma
+docker start -a konteyner_id/konteyner_name
+veya
+docker start --attach konteyner_id/konteyner_name
+
+* Konterneri detached mode ile Run etme
+docker run -d IMAGE
+
+* Konteyner silme (Silinmek istenen konteynerler önce durdurulmuş olmalıdır).
+docker rm CONT1 CONT2 ... CONT_N
+
+* Imaj silme ("docker images" ile mevcut imajları listeleyebiliriz)
+Öncelikle bu imajdan doğan konteynerler - çalışmıyor olsa bile - silinmelidir
+docker image prune (kullanılmayan tüm imajları siler)
+docker rmi IMG1 (belirttiğimiz imajı siler)
+veya
+docker desktop uygulamasının dashboard kısmından imajlar/konteynerler silinebilir
+
+* Imajlara isim (tag) verme
+docker build -t name:tag .
+Örn: docker build -t uygulamam:v0 .
+
+* Konteynerlere isim verme
+docker run --name uygulama_konteynerim IMAGE
+Örn: docker run -d -p 3050:3000 --name uygulama_konteynerim uygulamam:v0
+Durdurma: docker stop uygulama_konteynerim
