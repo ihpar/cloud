@@ -40,6 +40,9 @@ docker build .
 docker images
 docker image ls
 
+* Imaj oluşturma
+docker build .
+
 * Node app'ımızın imajını çalıştırma (en sondaki string image id olmalıdır):
 docker run -p 3050:3000 d2405d25d953
 
