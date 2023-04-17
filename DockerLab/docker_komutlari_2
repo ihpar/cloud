@@ -30,9 +30,5 @@ docker stop resim-app
 
 docker run -d -p 3050:80 --rm --name resim-app -v isim:konteyner/içindeki/yol IMAGE
 
-* ortam değişkenleri environment variables (.env)
-
-* .dockerignore dosyası
-
 * docker networks
 docker run --network my_network

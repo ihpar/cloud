@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galeri</title>
+  <title>Ana Sayfam</title>
   <style>
     .main-div {
       width: 600px;
@@ -13,33 +13,22 @@
       background-color: rgb(235, 240, 240);
       padding: 20px;
     }
-
-    .gallery-div {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-
-    img {
-      height: 200px;
-      margin-bottom: 12px;
-    }
   </style>
 </head>
 
 <body>
   <div class="main-div">
-    <h1>Galeri</h1>
-    <div class="gallery-div">
-      <% if(images.length) { %>
-      <% images.forEach((src)=> { %>
-      <img src="<%= src %>">
+    <h1>DB İçeriği</h1>
+    <% if(records.length) { %>
+    <ul>
+      <% records.forEach((rec)=> { %>
+      <li><%= rec %></li>
       <% }) %>
       <% } else { %>
-      <p>Yüklü resim bulunamadı.</p>
+      <li>DB'de kayıt yok.</li>
       <% } %>
-    </div>
-    <a href="/upload">Yükleme sayfasına dön</a>
+    </ul>
+    <a href="/">Ana sayfa</a>
   </div>
 </body>
 
