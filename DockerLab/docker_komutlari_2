@@ -1,0 +1,38 @@
+* Çalıştırılan konteyner durdurulduğunda konteyneri otomatik silme
+docker run --rm IMAGE
+
+docker stop KONTEYNER (çalıştırıldığında imajdan oluşturulan konteyner otomatk olarak silinmiş olacaktır.)
+
+docker ps -a
+
+* Çalışan konteynere konter dışından dosya kopyalama
+docker cp SOURCE_DIR/. KONTEYNER:/dest_dir (Dışardan konteynere)
+docker cp  KONTEYNER:/dest_dir SOURCE_DIR (Konteynerden dışarıya)
+
+* İmaj paylaşma
+1 - Sadece Dockerfile paylaşılabilir: kullanıcı kaynak kodu ve docker kullanarak kendi makinesinde imajı build eder.
+2 - Build edilmiş imaj paylaşılabilir: kullanıma hazırdır. Genelde bu tercih edilir.
+
+- dockerhubda create repository tıklanarak repo oluşturulur (örn: ihpar/ibu_rep)
+- push edilecek imaj repo adıyla aynı ada sahip olmalıdır:
+---- docker -t ihpar/ibu_rep build . (sıfırdan build)
+---- docker tag ESKİ_Ad YENİ_AD (mevcut imajı yeni isimle klonlar)
+- docker login 
+- docker push ihpar/ibu_rep:optional_tag
+
+
+- docker pull ihpar/ibu_rep
+
+* kalıcı named volume oluşturma (kalıcı, konteyner dışı dosya sistemi)
+docker run -d -p 3050:80 --rm --name resim-app -v isim:konteyner/içindeki/yol IMAGE
+
+docker stop resim-app
+
+docker run -d -p 3050:80 --rm --name resim-app -v isim:konteyner/içindeki/yol IMAGE
+
+* ortam değişkenleri environment variables (.env)
+
+* .dockerignore dosyası
+
+* docker networks
+docker run --network my_network
