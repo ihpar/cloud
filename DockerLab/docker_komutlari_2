@@ -31,4 +31,12 @@ docker stop resim-app
 docker run -d -p 3050:80 --rm --name resim-app -v isim:konteyner/içindeki/yol IMAGE
 
 * docker networks
-docker run --network my_network
+docker network create my_network
+
+axios.get("http://localhost:3050/db") -> axios.get("http://db-app:3050/db")
+
+docker build -t my_db -f Dockerfile.dbms .
+docker build -t my_server -f Dockerfile.server .
+
+docker run -d --rm --name db-app --network my_network my_db
+docker run -d --rm --name server-app -p 80:3000 --network my_network my_server

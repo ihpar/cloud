@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
 app.post("/kaydet", (req, res) => {
   const data = req.body.veri;
 
-  axios.post("http://localhost:3050/insert", {
+  axios.post("http://db-app:3050/insert", {
     db_veri: data
   })
     .then((response) => {
@@ -26,7 +26,7 @@ app.post("/kaydet", (req, res) => {
 });
 
 app.get("/kayitlar", (req, res) => {
-  axios.get("http://localhost:3050/db")
+  axios.get("http://db-app:3050/db")
     .then((response) => {
       console.log(response.data);
       res.render("db-contents", {
