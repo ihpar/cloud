@@ -5,10 +5,6 @@ docker stop KONTEYNER (çalıştırıldığında imajdan oluşturulan konteyner 
 
 docker ps -a
 
-* Çalışan konteynere konter dışından dosya kopyalama
-docker cp SOURCE_DIR/. KONTEYNER:/dest_dir (Dışardan konteynere)
-docker cp  KONTEYNER:/dest_dir SOURCE_DIR (Konteynerden dışarıya)
-
 * İmaj paylaşma
 1 - Sadece Dockerfile paylaşılabilir: kullanıcı kaynak kodu ve docker kullanarak kendi makinesinde imajı build eder.
 2 - Build edilmiş imaj paylaşılabilir: kullanıma hazırdır. Genelde bu tercih edilir.
@@ -19,7 +15,6 @@ docker cp  KONTEYNER:/dest_dir SOURCE_DIR (Konteynerden dışarıya)
 ---- docker tag ESKİ_Ad YENİ_AD (mevcut imajı yeni isimle klonlar)
 - docker login 
 - docker push ihpar/ibu_rep:optional_tag
-
 
 - docker pull ihpar/ibu_rep
 
