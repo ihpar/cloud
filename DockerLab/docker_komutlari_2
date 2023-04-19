@@ -19,6 +19,7 @@ docker ps -a
 - docker pull ihpar/ibu_rep
 
 * kalıcı named volume oluşturma (kalıcı, konteyner dışı dosya sistemi)
+(named volumes)
 docker run -d -p 3050:80 --rm --name resim-app -v isim:konteyner/içindeki/yol IMAGE
 
 docker stop resim-app
