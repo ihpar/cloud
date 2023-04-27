@@ -1,0 +1,16 @@
+# https://docs.docker.com/compose/compose-file/
+
+version: "3.8"
+services:
+  my-db:
+    build:
+      context: ./DB
+      dockerfile: Dockerfile
+    # container_name: my-db
+  my-server:
+    build: ./Server
+    # container_name: my-server
+    ports:
+      - "80:3000"
+    depends_on:
+      - my-db

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ana Sayfam</title>
+  <style>
+    .main-div {
+      width: 600px;
+      margin: 0 auto;
+      background-color: rgb(235, 240, 240);
+      padding: 20px;
+    }
+
+    .row {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-div">
+    <h1>Ana Sayfa</h1>
+    <form method="POST" action="/kaydet">
+      <div class="row">
+        <input type="text" name="veri">
+      </div>
+      <div class="row">
+        <input type="submit" value="Kaydet">
+      </div>
+    </form>
+    <a href="/kayitlar">Tüm kayıtlar</a>
+  </div>
+</body>
+
+</html>
