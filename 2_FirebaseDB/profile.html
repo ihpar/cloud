@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="dv-profile-section">
+      <h1>Merhaba <span id="spn-user-name"></span></h1>
+      <div>
+        <h3>Yapılacaklar</h3>
+        <ul>
+          <li>Test</li>
+        </ul>
+      </div>
+      <div class="dv-todo-wrap">
+        <input type="text" id="txt-todo" placeholder="Yapılacak giriniz..." />
+        <button type="button" id="btn-add-todo">Kaydet</button>
+      </div>
+      <button type="button" id="btn-signout">Çıkış Yap</button>
+    </div>
+
+    <script type="module">
+      import {
+        app,
+        auth,
+        signOut,
+        onAuthStateChanged,
+      } from "./authorization.js";
+
+      import { getDatabase, ref, get, set } from "./data.js";
+
+      const db = getDatabase(app);
+      const userData = {
+        id: null,
+        email: null,
+      };
+
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          userData.id = user.uid;
+          userData.email = user.email;
+          document.getElementById("spn-user-name").innerHTML = user.email;
+          set(ref(db, "users/" + user.uid), {
+            lastSeen: Date.now(),
+          });
+        } else {
+          console.log("Kullanıcı çıkış yapmış...");
+        }
+      });
+
+      const todoInput = document.getElementById("txt-todo");
+      document.getElementById("btn-add-todo").addEventListener("click", () => {
+        console.log(userData);
+        const todoValue = todoInput.value.trim();
+        console.log(todoValue);
+      });
+
+      document.getElementById("btn-signout").addEventListener("click", () => {
+        signOut(auth)
+          .then(() => {
+            console.log("Signout Başarılı");
+            window.location.href = "index.html";
+          })
+          .catch((error) => {
+            console.log("Signout Başarısız");
+          });
+      });
+    </script>
+  </body>
+</html>

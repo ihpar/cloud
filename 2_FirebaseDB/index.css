@@ -1,0 +1,52 @@
+.dv-auth-section {
+    margin: 16px auto;
+    padding: 32px;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  .dv-profile-section {
+    margin: 16px auto;
+    padding: 32px;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  .dv-todo-wrap{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  input,
+  button {
+    padding: 16px;
+    border: 1px solid #333;
+    width: 100%;
+    margin: 0 0 32px 0;
+    box-sizing: border-box;
+  }
+
+  .dv-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .dv-buttons button {
+    width: 48%;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  .btn-orange {
+    border: 1px solid #a44400;
+    background-color: #b34a00;
+    color: white;
+  }

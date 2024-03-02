@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Firebase DB Demo</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="dv-auth-section">
+      <h2>Kayıt Formu</h2>
+      <input type="text" id="txt-email-signup" placeholder="E-mail" />
+      <input type="password" id="txt-password-signup" placeholder="Şifre" />
+      <div class="dv-buttons">
+        <button type="button" id="btn-signup">Kaydol!</button>
+        <button type="button" class="btn-orange" id="btn-signup-google">
+          Google ile Kaydol!
+        </button>
+      </div>
+    </div>
+
+    <div class="dv-auth-section">
+      <h2>Giriş Formu</h2>
+      <input type="text" id="txt-email-login" placeholder="E-mail" />
+      <input type="password" id="txt-password-login" placeholder="Şifre" />
+      <div class="dv-buttons">
+        <button type="button" id="btn-login">Giriş Yap</button>
+        <button type="button" class="btn-orange" id="btn-login-google">
+          Google ile Giriş Yap
+        </button>
+      </div>
+    </div>
+
+    <script type="module">
+      import {
+        app,
+        auth,
+        provider,
+        GoogleAuthProvider,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+        signInWithPopup,
+        signOut,
+      } from "./authorization.js";
+
+      function goToProfilePage() {
+        window.location.href = "profile.html";
+      }
+
+      document.getElementById("btn-signup").addEventListener("click", () => {
+        const email = document.getElementById("txt-email-signup").value.trim();
+        const password = document
+          .getElementById("txt-password-signup")
+          .value.trim();
+
+        createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            console.log("Kayıt başarılı!");
+            console.log(user);
+            goToProfilePage();
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log("Signup hatası:");
+            console.log(errorMessage);
+          });
+      });
+
+      document.getElementById("btn-login").addEventListener("click", () => {
+        const email = document.getElementById("txt-email-login").value.trim();
+        const password = document
+          .getElementById("txt-password-login")
+          .value.trim();
+
+        signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            console.log("Login başarılı!");
+            console.log(user);
+            goToProfilePage();
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log("Login hatası:");
+            console.log(errorMessage);
+          });
+      });
+
+      // google kayıt
+      function googleLoginSignup() {
+        signInWithPopup(auth, provider)
+          .then((result) => {
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            const user = result.user;
+            console.log("Google Signup Başarılı!");
+            console.log(user);
+            goToProfilePage();
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log("Google Signup Hatası!");
+            console.log(errorMessage);
+          });
+      }
+
+      document
+        .getElementById("btn-signup-google")
+        .addEventListener("click", () => {
+          googleLoginSignup();
+        });
+
+      document
+        .getElementById("btn-login-google")
+        .addEventListener("click", () => {
+          googleLoginSignup();
+        });
+    </script>
+  </body>
+</html>
