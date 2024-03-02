@@ -11,9 +11,7 @@
       <h1>Merhaba <span id="spn-user-name"></span></h1>
       <div>
         <h3>Yapılacaklar</h3>
-        <ul>
-          <li>Test</li>
-        </ul>
+        <ul id="ul-todo"></ul>
       </div>
       <div class="dv-todo-wrap">
         <input type="text" id="txt-todo" placeholder="Yapılacak giriniz..." />
@@ -30,7 +28,7 @@
         onAuthStateChanged,
       } from "./authorization.js";
 
-      import { getDatabase, ref, get, set } from "./data.js";
+      import { getDatabase, ref, set, push, onValue } from "./data.js";
 
       const db = getDatabase(app);
       const userData = {
@@ -38,13 +36,24 @@
         email: null,
       };
 
+      const ulTodo = document.getElementById("ul-todo");
+
       onAuthStateChanged(auth, (user) => {
         if (user) {
           userData.id = user.uid;
           userData.email = user.email;
           document.getElementById("spn-user-name").innerHTML = user.email;
-          set(ref(db, "users/" + user.uid), {
-            lastSeen: Date.now(),
+
+          const todoRef = ref(db, "/users/" + userData.id + "/todos");
+          onValue(todoRef, (snapshot) => {
+            ulTodo.innerHTML = "";
+
+            snapshot.forEach((childSnapshot) => {
+              const todoData = childSnapshot.val();
+              const liElem = document.createElement("li");
+              liElem.innerHTML = todoData.todo;
+              ulTodo.appendChild(liElem);
+            });
           });
         } else {
           console.log("Kullanıcı çıkış yapmış...");
@@ -56,6 +65,14 @@
         console.log(userData);
         const todoValue = todoInput.value.trim();
         console.log(todoValue);
+
+        const todoListRef = ref(db, "/users/" + userData.id + "/todos");
+        const newTodoRef = push(todoListRef);
+        set(newTodoRef, {
+          todo: todoValue,
+        });
+
+        todoInput.value = "";
       });
 
       document.getElementById("btn-signout").addEventListener("click", () => {
