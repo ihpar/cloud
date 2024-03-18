@@ -55,7 +55,7 @@ veya
 docker stop container_name
 
 * Konteyner başlatma
-"docker run container_id" ile aynı imajdan YENİ bir konteyner başlatılır.
+"docker run image_id" ile ID'si verilen imajdan YENİ bir konteyner başlatılır.
 "docker start container_id" veya "docker start name" ile eskiden başlatılıp durdurulmuş bir konteyner tekrar başlatılır. 
 
 * Konteyneri attached mode ile başlatma
@@ -68,6 +68,9 @@ docker run -d IMAGE
 
 * Konteyner silme (Silinmek istenen konteynerler önce durdurulmuş olmalıdır).
 docker rm CONT1 CONT2 ... CONT_N
+
+* Tüm konteynerleri tek seferde silme
+docker rm $(docker ps -qa) 
 
 * Imaj silme ("docker images" ile mevcut imajları listeleyebiliriz)
 Öncelikle bu imajdan doğan konteynerler - çalışmıyor olsa bile - silinmelidir
