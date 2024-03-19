@@ -63,20 +63,29 @@ docker start -a konteyner_id/konteyner_name
 veya
 docker start --attach konteyner_id/konteyner_name
 
-* Konterneri detached mode ile Run etme
+* Detached mode ile başlatılan bir konteynere sonradan bağlanma
+docker attach konteyner_id/konteyner_name
+
+* Imajı detached mode ile Run etme
 docker run -d IMAGE
 
 * Konteyner silme (Silinmek istenen konteynerler önce durdurulmuş olmalıdır).
 docker rm CONT1 CONT2 ... CONT_N
+
+* Tüm durdurulmuş konteynerleri silme
+docker container prune
 
 * Tüm konteynerleri tek seferde silme
 docker rm $(docker ps -qa) 
 
 * Imaj silme ("docker images" ile mevcut imajları listeleyebiliriz)
 Öncelikle bu imajdan doğan konteynerler - çalışmıyor olsa bile - silinmelidir
+
 docker image prune (kullanılmayan tüm imajları siler)
 docker rmi IMG1 (belirttiğimiz imajı siler)
+
 veya
+
 docker desktop uygulamasının dashboard kısmından imajlar/konteynerler silinebilir
 
 * Imajlara isim (tag) verme
