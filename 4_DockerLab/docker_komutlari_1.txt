@@ -92,6 +92,9 @@ docker desktop uygulamasının dashboard kısmından imajlar/konteynerler siline
 docker build -t name:tag .
 Örn: docker build -t uygulamam:v0 .
 
+* Tagleri olan imajları silme
+docker image prune -a
+
 * Konteynerlere isim verme
 docker run --name uygulama_konteynerim IMAGE
 Örn: docker run -d -p 3050:3000 --name uygulama_konteynerim uygulamam:v0
