@@ -58,6 +58,8 @@ docker stop container_name
 "docker run image_id" ile ID'si verilen imajdan YENİ bir konteyner başlatılır.
 "docker start container_id" veya "docker start name" ile eskiden başlatılıp durdurulmuş bir konteyner tekrar başlatılır. 
 
+***************************** 1. dersin sonu ******************************
+
 * Konteyneri attached mode ile başlatma
 docker start -a konteyner_id/konteyner_name
 veya
@@ -81,7 +83,7 @@ docker rm $(docker ps -qa)
 * Imaj silme ("docker images" ile mevcut imajları listeleyebiliriz)
 Öncelikle bu imajdan doğan konteynerler - çalışmıyor olsa bile - silinmelidir
 
-docker image prune (kullanılmayan tüm imajları siler)
+docker image prune (kullanılmayan tüm İSİMSİZ imajları siler)
 docker rmi IMG1 (belirttiğimiz imajı siler)
 
 veya

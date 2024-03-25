@@ -17,6 +17,9 @@ docker ps -a
 - docker push ihpar/ibu_rep:optional_tag
 
 - docker pull ihpar/ibu_rep
+---- veya ----
+- docker run -d -p 3050:3000 --name my_app --rm ihpar/ibu_rep
+- docker logs my_app
 
 * kalıcı named volume oluşturma (kalıcı, konteyner dışı dosya sistemi)
 (named volumes)
