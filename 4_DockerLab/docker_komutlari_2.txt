@@ -29,6 +29,20 @@ docker stop resim-app
 
 docker run -d -p 3050:80 --rm --name resim-app -v isim:konteyner/içindeki/yol IMAGE
 
+* docker volume'lerini listeleme 
+
+docker volume ls
+
+-- veya docker desktop dashboard
+
+* docker volume silme 
+
+docker volume rm volume_ismi
+
+-- tüm volume'ları silme 
+
+docker volume prune
+
 * docker networks
 docker network create my_network
 

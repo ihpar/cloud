@@ -101,3 +101,7 @@ docker image prune -a
 docker run --name uygulama_konteynerim IMAGE
 Örn: docker run -d -p 3050:3000 --name uygulama_konteynerim uygulamam:v0
 Durdurma: docker stop uygulama_konteynerim
+
+* Örnek Python uygulaması 
+-- Not: Docker imajları oluşturulduktan sonra uygulama kaynak kodlarındaki değişiklikler
+imaja yansıyamaz. Kaynak kodda değişiklik yapılırsa imaj tekrar build edilmelidir.
