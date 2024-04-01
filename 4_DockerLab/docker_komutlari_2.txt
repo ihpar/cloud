@@ -44,12 +44,23 @@ docker volume rm volume_ismi
 docker volume prune
 
 * docker networks
+* konteynerler arası kullanılmak üzere yeni network oluşturma 
 docker network create my_network
 
+* mevcut docker ağlarını listeleme 
+docker network ls
+
+* container içi ip düzenlemeleri
 axios.get("http://localhost:3050/db") -> axios.get("http://db-app:3050/db")
 
+* aynı dizin içerisinde 1'den fazla Dockerfile
 docker build -t my_db -f Dockerfile.dbms .
 docker build -t my_server -f Dockerfile.server .
 
+* aynı docker ağında birbiri ile haberleşebilen konteynerler başlatma
 docker run -d --rm --name db-app --network my_network my_db
 docker run -d --rm --name server-app -p 80:3000 --network my_network my_server
+
+* docker ağlarını silme 
+docker network rm my_network 
+docker network prune
