@@ -1,77 +1,81 @@
-*** Docker Compose ***
+**_ Docker Compose _**
 
 (Docker Compose ile çalıştırılan konteynerler otomatik olarak aynı docker ağında çalışırlar)
 
-* detached mode ile docker compose dosyasını çalıştırma:
-docker-compose up -d 
+- detached mode ile docker compose dosyasını çalıştırma:
+  docker-compose up -d
+  veya
+  docker-compose -f my_docker_compose_file.yaml up -d
 
-* mevcut konteynerleri listeleme:
-docker ps 
+- mevcut konteynerleri listeleme:
+  docker ps
 
-* konteyner loglarını görüntüleme:
-docker logs konteyner_ismi
+- konteyner loglarını görüntüleme:
+  docker logs konteyner_ismi
 
-* docker compose ile çalıştırılmış konteynerleri durdurma:
-docker-compose down
+- docker compose ile çalıştırılmış konteynerleri durdurma:
+  docker-compose down
+  veya
+  docker-compose -f my_docker_compose_file.yaml down
 
-* docker compose'un imajları tekrar build etmesini zorlama:
-docker-compose up --build
+- docker compose'un imajları tekrar build etmesini zorlama:
+  docker-compose up --build
 
-*** Kubernetes ***
+**_ Kubernetes _**
 
-* minikube kurulmalı
-https://minikube.sigs.k8s.io/docs/start/
+- minikube kurulmalı
+  https://minikube.sigs.k8s.io/docs/start/
 
-* minikube başlatma:
-minikube start
+- minikube başlatma:
+  minikube start
 
-* minikube inceleme
-minikube status
+- minikube inceleme
+  minikube status
 
-* K8s ile Docker imajlarını çalıştırmak için imajlar öncelikle bir repository'ye (Docker hub) yüklenmiş olmalıdır.
+- K8s ile Docker imajlarını çalıştırmak için imajlar öncelikle bir repository'ye (Docker hub) yüklenmiş olmalıdır.
 
 docker build -t user/repo .
 docker login
 docker push user/repo
 
-* kubectl ile Deployment Objesi oluşturma
-kubectl create deployment my-app --image=ihpar/my-db
+- kubectl ile Deployment Objesi oluşturma
+  kubectl create deployment my-app --image=ihpar/my-db
 
-* kubectl ile deployment listeleme
-kubectl get deployments
+- kubectl ile deployment listeleme
+  kubectl get deployments
 
-* kubectl ile pod listeleme
-kubectl get pods
+- kubectl ile pod listeleme
+  kubectl get pods
 
-* minikube dashboard görüntüleme
-minikube dashboard
+- minikube dashboard görüntüleme
+  minikube dashboard
 
-* deployment içindeki pod'daki konteynere dış dünyadan erişme
-** LoadBalancer servisi oluşturma:
-kubectl expose deployment my-app --type=LoadBalancer --port=3050
+- deployment içindeki pod'daki konteynere dış dünyadan erişme
+  \*\* LoadBalancer servisi oluşturma:
+  kubectl expose deployment my-app --type=LoadBalancer --port=3050
 
-** servisleri listeleme
+\*\* servisleri listeleme
 kubectl get services
 
-** minikube ile, oluşturmuş olduğumuz LoadBalancer servisine erişme
+\*\* minikube ile, oluşturmuş olduğumuz LoadBalancer servisine erişme
 minikube service my-app
 
-** postman ile db uygulamamıza erişme
+\*\* postman ile db uygulamamıza erişme
 
-* Deployment scaling
-kubectl scale deployment/my-app --replicas=3
-kubectl get pods
-kubectl scale deployment/my-app --replicas=1
-kubectl get pods
+- Deployment scaling
+  kubectl scale deployment/my-app --replicas=3
+  kubectl get pods
+  kubectl scale deployment/my-app --replicas=1
+  kubectl get pods
 
-* Deployment silme
-kubectl delete deployment my-app
-kubectl get pods
-kubectl get services
-kubectl delete services my-app
+- Deployment silme
+  kubectl delete deployment my-app
+  kubectl get pods
+  kubectl get services
+  kubectl delete services my-app
 
-* Declerative olarak deployment oluşturma
-https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+- Declerative olarak deployment oluşturma
+  https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 
 1. kubectl apply -f=deployment.yaml
 
@@ -81,8 +85,8 @@ https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 
 4. kubectl delete -f=deployment.yaml
 
-* Aynı pod içinde 1'den çok konteyner çalıştırma ve konteynerler arası iletişim
-KubLab/Part2
+- Aynı pod içinde 1'den çok konteyner çalıştırma ve konteynerler arası iletişim
+  KubLab/Part2
 
 1. docker-compose up -d: sistemi test edelim. Devamında docker-compose down ile konteynerleri durduralım.
 
@@ -92,5 +96,5 @@ KubLab/Part2
 
 4. kubectl delete -f=networking.yaml
 
-* minikube durdurma:
-minikube stop
+- minikube durdurma:
+  minikube stop

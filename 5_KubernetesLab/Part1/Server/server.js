@@ -15,9 +15,10 @@ app.get("/", (req, res) => {
 app.post("/kaydet", (req, res) => {
   const data = req.body.veri;
 
-  axios.post(`${dbAddress}/insert`, {
-    db_veri: data
-  })
+  axios
+    .post(`${dbAddress}/insert`, {
+      db_veri: data,
+    })
     .then((response) => {
       console.log(response.data);
     })
@@ -29,11 +30,12 @@ app.post("/kaydet", (req, res) => {
 });
 
 app.get("/kayitlar", (req, res) => {
-  axios.get(`${dbAddress}/db`)
+  axios
+    .get(`${dbAddress}/db`)
     .then((response) => {
       console.log(response.data);
       res.render("db-contents", {
-        records: response.data.split(",")
+        records: response.data.split(","),
       });
     })
     .catch((err) => {
