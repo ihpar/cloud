@@ -16,6 +16,11 @@ app.get("/db", (req, res) => {
   res.send(db.join(","));
 });
 
+app.get("/error", (req, res) => {
+  console.log("exiting db");
+  process.exit(1);
+});
+
 app.listen(3050, () => {
   console.log("DB başlatıldı!");
 });
