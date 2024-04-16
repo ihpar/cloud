@@ -1,5 +1,4 @@
 # https://docs.docker.com/compose/compose-file/
-
 version: "3.8"
 services:
   my-db:
@@ -7,11 +6,11 @@ services:
       context: ./DB
       dockerfile: Dockerfile
     container_name: my-db
-    image: my_db_image
+    image: my-db-image
   my-server:
     build: ./Server
     container_name: my-server
-    image: my_server_image
+    image: my-server-image
     ports:
       - "80:3000"
     depends_on:
