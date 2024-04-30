@@ -15,3 +15,6 @@ spec:
       containers:
         - name: nodejs-server
           image: ihpar/my-kub-server:latest
+          env:
+            - name: DB_ADDRESS
+              value: "db-service.default"

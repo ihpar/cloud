@@ -6,7 +6,6 @@ app.use(require("body-parser").urlencoded({ extended: false }));
 app.set("view engine", "ejs");
 
 const dbAddress = `http://${process.env.DB_ADDRESS}:3050`;
-//const dbAddress = `http://${process.env.DB_SERVICE_SERVICE_HOST}:3050`;
 
 app.get("/", (req, res) => {
   res.render("home");
