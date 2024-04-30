@@ -77,24 +77,40 @@ minikube service my-app
 - Declerative olarak deployment oluşturma
   https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 
-1. kubectl apply -f=deployment.yaml
+- Manifest dosyaları
+  https://kubernetes.io/docs/concepts/overview/working-with-objects/
+
+1. kubectl apply -f deployment.yaml
 
 2. minikube service my-service
 
 3. postman testleri
 
-4. kubectl delete -f=deployment.yaml
+4. kubectl delete -f deployment.yaml
 
 - Aynı pod içinde 1'den çok konteyner çalıştırma ve konteynerler arası iletişim
   KubLab/Part2
 
-1. docker-compose up -d: sistemi test edelim. Devamında docker-compose down ile konteynerleri durduralım.
+-- iptal -- 1. docker-compose up -d: sistemi test edelim. Devamında docker-compose down ile konteynerleri durduralım.
 
 2. networking.yaml dosyasını inceleyelim
 
-3. "kubectl apply -f=networking.yaml" -> ardından -> "minikube service my-second-service"
+3. "kubectl apply -f networking.yaml" -> ardından -> "minikube service my-second-service"
 
-4. kubectl delete -f=networking.yaml
+4. kubectl delete -f networking.yaml
+
+- db ve server uygulama konteynerlerini farklı podlarda çalıştırma
+
+1. db-deployment.yaml, server-deployment.yaml, db-service.yaml, server-service.yaml dosyalarını inceleyelim
+
+2. server içerisindeki db uygulaması adresi process.env.DB_SERVICE_SERVICE_HOST olarak güncellendikten sonra
+  docker hub'a yeni imaj oluşturulup push edilmeli
+
+3. kubectl apply -f db-deployment.yaml -f server-deployment.yaml -f server-service.yaml -f db-service.yaml
+
+4. minikube service server-service
+
+5. kubectl delete -f db-deployment.yaml -f server-deployment.yaml -f server-service.yaml -f db-service.yaml
 
 - minikube durdurma:
   minikube stop

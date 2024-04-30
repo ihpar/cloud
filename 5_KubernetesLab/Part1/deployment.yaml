@@ -4,26 +4,26 @@ metadata:
   name: my-service
 spec:
   selector:
-    app: second-app
+    app: second-app # bu servisin hangi pod'ları servis edeceği (satır 25)
   ports:
     - port: 80
       targetPort: 3050
   type: LoadBalancer
 ---
 apiVersion: apps/v1
-kind: Deployment 
+kind: Deployment
 metadata:
   name: my-second-app
-spec:
+spec: # deployment'a dair tanımlamalar
   replicas: 1
   selector:
     matchLabels:
-      app: second-app
+      app: second-app # bu deployment'ın hangi pod'ları yöneteceği
   template: # pod ile ilgili konfig
     metadata:
       labels:
         app: second-app # istedigimiz key:value değerini verebiliriz
-    spec:
+    spec: # pod'a dair tanımlamalar
       containers:
         - name: nodejs-db
           image: ihpar/my-db
