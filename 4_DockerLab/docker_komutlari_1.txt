@@ -25,7 +25,7 @@ docker ps -a
 
 **** Bir Node App Örneği ****
 
-* Verilen örnek node uygulaması için (sadece server.js dosyasından oluşan uygulama) öncelikle projenin dependency'lerini kumamız gerekiyor.
+* Verilen örnek node uygulaması için (sadece server.js dosyasından oluşan uygulama) öncelikle projenin dependency'lerini kurmamız gerekiyor.
 
 * Projenin dependency kütüphaneleri package.json içerisinde listelenir (şu an sadece "express": "^4.18.2").
 
@@ -38,7 +38,7 @@ docker build .
 
 * Sistemdeki imajları listeleme:
 docker images
-docker image ls
+docker image ls (-a)
 
 * Imaj oluşturma
 docker build .
@@ -65,7 +65,7 @@ docker start -a konteyner_id/konteyner_name
 veya
 docker start --attach konteyner_id/konteyner_name
 
-* detached modda çallışan konteyner loglarını görüntüleme
+* detached modda çalışan konteyner loglarını görüntüleme
 docker logs konteyner_id/konteyner_name
 
 * Detached mode ile başlatılan bir konteynere sonradan bağlanma

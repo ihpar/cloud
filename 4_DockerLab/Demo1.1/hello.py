@@ -1,4 +1,6 @@
+print("Naber?")
 while True:
-    print("Merhaba")
-    ad = input("Adın ne? ")
-    print("Merhaba", ad)
+    msg = input()
+    if msg == "bye":
+        break 
+    print(f"{msg} mi dedin?")

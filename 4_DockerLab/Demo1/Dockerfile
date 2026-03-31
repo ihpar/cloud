@@ -1,5 +1,5 @@
 # Base image
-FROM node:16
+FROM node:24
 # Imaj içinde çalışacağımız dizin
 WORKDIR /app
 # Mevcut dizindeki tüm dosyaları (.) imaj içindeki "/app" dizinine kopyala
