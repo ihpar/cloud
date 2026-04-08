@@ -5,6 +5,8 @@ docker stop KONTEYNER (çalıştırıldığında imajdan oluşturulan konteyner 
 
 docker ps -a
 
+** Demo2 **
+
 * İmaj paylaşma
 1 - Sadece Dockerfile paylaşılabilir: kullanıcı kaynak kodu ve docker kullanarak kendi makinesinde imajı build eder.
 2 - Build edilmiş imaj paylaşılabilir: kullanıma hazırdır. Genelde bu tercih edilir.
@@ -42,6 +44,8 @@ docker volume rm volume_ismi
 -- tüm volume'ları silme 
 
 docker volume prune
+
+** Demo3 **
 
 * docker networks
 * konteynerler arası kullanılmak üzere yeni network oluşturma 
