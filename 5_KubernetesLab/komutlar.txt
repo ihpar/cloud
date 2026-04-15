@@ -1,7 +1,7 @@
 **_ Docker Compose _**
 
-!!! Cloud servis güvenliği
-!!! Sunum başlangıç tarihi
+!!! Cloud servis güvenliği !!!
+!!! Sunum başlangıç tarihi !!!
 
 (Docker Compose ile çalıştırılan konteynerler otomatik olarak aynı docker ağında çalışırlar)
 
