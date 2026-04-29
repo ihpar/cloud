@@ -73,6 +73,7 @@ minikube service my-app
   kubectl get pods
   kubectl get services
   kubectl delete services my-app
+  kubectl get deployments
 
 - Declerative olarak deployment oluşturma
   https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
